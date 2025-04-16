@@ -22,7 +22,7 @@ on:
 jobs:
   prepare-contracts:
     name: Prepare contracts
-    runs-on: ubuntu-latest
+    runs-on: revolution-runner
     steps:
       - uses: actions/checkout@v4
         with:
@@ -67,7 +67,7 @@ jobs:
   build-server-v2:
     name: Build and Push Server V2 Image
     needs: prepare-contracts
-    runs-on: ubuntu-latest
+    runs-on: revolution-runner
     permissions:
       packages: write
       contents: read
@@ -144,7 +144,7 @@ jobs:
 
   create-manifest:
     name: Create release manifest
-    runs-on: ubuntu-latest
+    runs-on: revolution-runner
     needs: build-server-v2
     if: ${{ inputs.action == 'push' }}
     env:
@@ -171,7 +171,7 @@ jobs:
   cleanup:
     needs: [build-server-v2, create-manifest]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: revolution-runner
     steps:
       - name: Cleanup resources
         run: |
