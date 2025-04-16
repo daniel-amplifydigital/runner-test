@@ -182,4 +182,4 @@ jobs:
     steps:
       - name: Cleanup resources
         run: |
-          docker system prune -af
+          sudo docker system prune -af
