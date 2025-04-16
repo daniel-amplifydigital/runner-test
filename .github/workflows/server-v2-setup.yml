@@ -74,6 +74,12 @@ jobs:
         with:
           toolchain: nightly-2024-09-01
 
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build contracts
+        run: yarn build:contracts
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
