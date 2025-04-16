@@ -35,6 +35,12 @@ jobs:
         with:
           submodules: "recursive"
 
+      - name: Setup Docker permissions
+        shell: bash
+        run: |
+          sudo chmod 666 /var/run/docker.sock
+          sudo chmod 777 /var/run/docker
+
       - name: Prepare ENV
         shell: bash
         run: |
@@ -84,6 +90,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: "recursive"
+
+      - name: Setup Docker permissions
+        shell: bash
+        run: |
+          sudo chmod 666 /var/run/docker.sock
+          sudo chmod 777 /var/run/docker
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
